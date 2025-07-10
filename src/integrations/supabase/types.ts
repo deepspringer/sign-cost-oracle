@@ -14,7 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      sign_projects: {
+        Row: {
+          complexity: Database["public"]["Enums"]["complexity_level"]
+          created_at: string
+          description: string | null
+          has_lighting: boolean
+          height: number
+          id: string
+          labor_cost: number
+          material_cost: number
+          material_type: string
+          name: string
+          paint_colors: number
+          quality: Database["public"]["Enums"]["quality_level"]
+          sign_type: Database["public"]["Enums"]["sign_type"]
+          total_cost: number
+          updated_at: string
+          width: number
+        }
+        Insert: {
+          complexity: Database["public"]["Enums"]["complexity_level"]
+          created_at?: string
+          description?: string | null
+          has_lighting?: boolean
+          height: number
+          id?: string
+          labor_cost?: number
+          material_cost?: number
+          material_type: string
+          name: string
+          paint_colors?: number
+          quality: Database["public"]["Enums"]["quality_level"]
+          sign_type: Database["public"]["Enums"]["sign_type"]
+          total_cost: number
+          updated_at?: string
+          width: number
+        }
+        Update: {
+          complexity?: Database["public"]["Enums"]["complexity_level"]
+          created_at?: string
+          description?: string | null
+          has_lighting?: boolean
+          height?: number
+          id?: string
+          labor_cost?: number
+          material_cost?: number
+          material_type?: string
+          name?: string
+          paint_colors?: number
+          quality?: Database["public"]["Enums"]["quality_level"]
+          sign_type?: Database["public"]["Enums"]["sign_type"]
+          total_cost?: number
+          updated_at?: string
+          width?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +79,14 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      complexity_level: "low" | "medium" | "high"
+      quality_level: "basic" | "standard" | "premium"
+      sign_type:
+        | "pylon"
+        | "channel_letters"
+        | "monument"
+        | "wall"
+        | "flat_cutout"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +213,16 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      complexity_level: ["low", "medium", "high"],
+      quality_level: ["basic", "standard", "premium"],
+      sign_type: [
+        "pylon",
+        "channel_letters",
+        "monument",
+        "wall",
+        "flat_cutout",
+      ],
+    },
   },
 } as const
